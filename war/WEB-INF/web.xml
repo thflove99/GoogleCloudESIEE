@@ -21,7 +21,15 @@
 	</servlet-mapping>	
 	
 	
-	
+	<servlet>	
+		<servlet-name>TacheDeFond</servlet-name>
+		<servlet-class>com.esiee.TacheDeFondServlet</servlet-class>
+	</servlet>
+	<servlet-mapping> 
+		<servlet-name>TacheDeFond</servlet-name>
+		<url-pattern>/tacheDeFond</url-pattern>
+	</servlet-mapping>	
+		
 	
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>

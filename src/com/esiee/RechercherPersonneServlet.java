@@ -12,6 +12,10 @@ import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Query.FilterOperator;
+import com.google.appengine.api.taskqueue.Queue;
+import com.google.appengine.api.taskqueue.QueueFactory;
+import com.google.appengine.api.taskqueue.TaskOptions;
+import com.google.appengine.api.taskqueue.TaskOptions.Method;
 
 @SuppressWarnings("serial")
 public class RechercherPersonneServlet extends HttpServlet {
@@ -32,6 +36,14 @@ public class RechercherPersonneServlet extends HttpServlet {
 			entity = entities.next();
 		}
 		if(entity != null){
+			
+			System.out.println("Envoi demande exécution de la tache de fond");
+			
+			Queue queue = QueueFactory.getDefaultQueue();
+			queue.add(TaskOptions.Builder.withUrl("/tacheDeFond").method(Method.POST));
+			
+			System.out.println("Fin envoi demande exécution de la tache de fond");
+			
 			try {
 				req.setAttribute("nom", nom);
 				getServletContext().getRequestDispatcher("/confirmation.jsp").forward(req, resp);
