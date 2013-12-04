@@ -20,7 +20,8 @@ public class TacheDeFondServlet extends HttpServlet {
 	
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		
-		System.out.println("Debut tache de fond.");
+		String nom = req.getParameter("nom");
+		System.out.println("Debut tache de fond avec parametre : " + nom);
 		 
 		if(compteur < 3){
 			System.out.println("Tache en erreur : elle va être relancée !");

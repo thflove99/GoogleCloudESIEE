@@ -40,7 +40,7 @@ public class RechercherPersonneServlet extends HttpServlet {
 			System.out.println("Envoi demande exécution de la tache de fond");
 			
 			Queue queue = QueueFactory.getDefaultQueue();
-			queue.add(TaskOptions.Builder.withUrl("/tacheDeFond").method(Method.POST));
+			queue.add(TaskOptions.Builder.withUrl("/tacheDeFond").method(Method.POST).param("nom", nom));
 			
 			System.out.println("Fin envoi demande exécution de la tache de fond");
 			
